@@ -1,0 +1,4 @@
+Nasi_Goreng_Gila 15000
+Nasi_Goreng_Seafood 25000
+Es_Teh_Manis 7000
+Kopi_Susu 8000
