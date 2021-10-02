@@ -1,26 +1,28 @@
 #include <stdio.h>
 #include <string.h>
 
-// food's detail
 struct food {
     char Name[255];
     int Price;
     bool available;
 };
 
-// Global Variables
+
 food foods[50];
 int totFoods = 0;
 
-// Function Prototypes
+
 void showMenu() {
-	FILE *fp = fopen("menu.txt", "r");
-    for(int i = 0; i < totFoods; i++) {
-//        if(foods[i].available) {
-            printf("%s %d\n", foods[i].Name, foods[i].Price);
-  //      }
+ FILE *fp = fopen("menu.txt", "r");
+ char meow[50][100];
+ int mew[100];
+ int i =0;
+    while(fscanf(fp, "%s %d", &meow[i], &mew[i])!= EOF) {
+        printf("%s %d\n", meow[i], mew[i]);
+        i++;
     }fclose(fp);
 }
+
 
 void addFood(food x) {
 	FILE *fp = fopen("menu.txt", "a");
@@ -31,6 +33,7 @@ void addFood(food x) {
 	fprintf(fp, "%s %d\n",x.Name,x.Price);	
     fclose(fp);
 }
+
 
 void removeFood() {
     char foodName[255];
@@ -43,6 +46,7 @@ void removeFood() {
         }
     }
 }
+
 
 void updatePrice() {
     char foodName[255];
@@ -59,12 +63,14 @@ void updatePrice() {
     }
 }
 
+
 void showUser(){
     puts("Who are you?");
     puts("1. Admin");
     puts("2. Guest");	
     puts("3. Exit");
 }
+
 
 void showChoices() {
     puts("Main Menu");
@@ -75,11 +81,13 @@ void showChoices() {
     puts("5. Exit");   
 }
 
+
 void showGuest(){
     puts("Welcome");
     puts("1. Show Menu");
     puts("2. Exit");	
 }
+
 
 void mainMenu() {
     bool onApp = true;
@@ -135,6 +143,7 @@ void mainMenu() {
 		}
     }
 }
+
 
 int main() {	
     mainMenu();
