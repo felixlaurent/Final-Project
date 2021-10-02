@@ -16,20 +16,20 @@ int totFoods = 0;
 void showMenu() {
 	FILE *fp = fopen("menu.txt", "r");
     for(int i = 0; i < totFoods; i++) {
-        if(foods[i].available) {
+//        if(foods[i].available) {
             printf("%s %d\n", foods[i].Name, foods[i].Price);
-        }
+  //      }
     }fclose(fp);
 }
 
 void addFood(food x) {
+	FILE *fp = fopen("menu.txt", "a");
     strcpy(foods[totFoods].Name, x.Name);
     foods[totFoods].Price = x.Price;
     foods[totFoods].available = true;
-    totFoods++; 
-	FILE *fp = fopen("menu.txt", "w");
-	fprintf(fp, "%s %d\n",x.Name,x.Price);
-	fclose(fp);
+    totFoods++;
+	fprintf(fp, "%s %d\n",x.Name,x.Price);	
+    fclose(fp);
 }
 
 void removeFood() {
