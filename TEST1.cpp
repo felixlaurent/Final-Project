@@ -14,12 +14,12 @@ int totFoods = 0;
 
 // Function Prototypes
 void showMenu() {
-	FILE *fp = fopen("scores.txt", "r");
+	FILE *fp = fopen("menu.txt", "r");
     for(int i = 0; i < totFoods; i++) {
         if(foods[i].available) {
             printf("%s %d\n", foods[i].Name, foods[i].Price);
         }
-    }
+    }fclose(fp);
 }
 
 void addFood(food x) {
@@ -27,6 +27,9 @@ void addFood(food x) {
     foods[totFoods].Price = x.Price;
     foods[totFoods].available = true;
     totFoods++; 
+	FILE *fp = fopen("menu.txt", "w");
+	fprintf(fp, "%s %d\n",x.Name,x.Price);
+	fclose(fp);
 }
 
 void removeFood() {
@@ -133,8 +136,7 @@ void mainMenu() {
     }
 }
 
-int main() {
-	FILE *fp = fopen("menu.txt", "r");	
+int main() {	
     mainMenu();
     return 0;
 }
